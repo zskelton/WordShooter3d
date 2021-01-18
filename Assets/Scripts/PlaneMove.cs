@@ -12,8 +12,8 @@ public class PlaneMove : MonoBehaviour
         
     }
 
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
     {
         //update the position
         transform.position = transform.position + new Vector3(0, 0, 1.0f * -movementSpeed * Time.deltaTime);
@@ -21,8 +21,5 @@ public class PlaneMove : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 50f);
         }
-
-        //output to log the position change
-        Debug.Log(transform.position);
     }
 }
