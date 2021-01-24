@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class RocketBehavior : MonoBehaviour
 {
-    public float movementSpeed = 0.1f;
+    public float speed = 10f;
 
-    private bool firing = false;
+    private bool firing;
+    private Vector3 defaultPos;
+
+    void Start()
+    {
+        defaultPos = this.transform.position;
+    }
 
     // Update is called once per frame
     void Update()
@@ -18,10 +24,10 @@ public class RocketBehavior : MonoBehaviour
 
         if(firing)
         {
-            transform.Translate(0f, movementSpeed*Time.deltaTime, 0f, Space.World);
-            if (transform.position.y >= 10 && firing)
+            transform.position = transform.position + new Vector3(0, 0, 1.0f * -speed * Time.deltaTime);
+            if(transform.position.y > 25f)
             {
-                transform.position = new Vector3(0f, 0f, 5f);
+                transform.position = defaultPos;
                 firing = false;
             }
         }
